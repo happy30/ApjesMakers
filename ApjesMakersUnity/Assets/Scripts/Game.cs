@@ -11,8 +11,13 @@ public class Game : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject circle;
+    GameObject spawnedCircle;
+    public Transform backgroundObject;
 
-	public void OnTap()
+
+
+    public void OnTap()
     {
         sound.PlayOneShot(IM.instruments[0].GetAudioClip());
         GetScore();
@@ -26,6 +31,13 @@ public class Game : MonoBehaviour
         {
             anim.SetBool("TapLeft", true);
         }
+
+        spawnedCircle = (GameObject)Instantiate(circle);
+        spawnedCircle.transform.SetParent(backgroundObject);
+        spawnedCircle.GetComponent<RectTransform>().position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+        spawnedCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+        spawnedCircle.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
     }
 
     public void GetScore()
