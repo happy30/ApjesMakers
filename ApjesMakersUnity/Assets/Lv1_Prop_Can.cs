@@ -28,16 +28,9 @@ public class Lv1_Prop_Can : MonoBehaviour {
 	void Update ()
     {
         rect.anchoredPosition += new Vector2(speed * Time.deltaTime, 0);
-        if(rect.anchoredPosition.x > 740 && !hasInvoked)
+        if(rect.anchoredPosition.x > 1400)
         {
-            hasInvoked = true;
-            Invoke("ResetPos", respawnTime);
+            Destroy(gameObject);
         }
 	}
-
-    public void ResetPos()
-    {
-        rect.anchoredPosition = new Vector2(-700, rect.anchoredPosition.y);
-        hasInvoked = false;
-    }
 }

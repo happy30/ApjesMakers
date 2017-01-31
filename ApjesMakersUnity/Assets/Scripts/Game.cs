@@ -15,6 +15,8 @@ public class Game : MonoBehaviour
     GameObject spawnedCircle;
     public Transform backgroundObject;
 
+    public float 
+
 
 
     public void OnTap()
@@ -32,11 +34,17 @@ public class Game : MonoBehaviour
             anim.SetBool("TapLeft", true);
         }
 
+        if(spawnedCircle != null)
+        {
+            Destroy(spawnedCircle.gameObject);
+        }
+
         spawnedCircle = (GameObject)Instantiate(circle);
         spawnedCircle.transform.SetParent(backgroundObject);
         spawnedCircle.GetComponent<RectTransform>().position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         spawnedCircle.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
         spawnedCircle.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
 
     }
 

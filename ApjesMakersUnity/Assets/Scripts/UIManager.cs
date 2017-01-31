@@ -27,8 +27,8 @@ public class UIManager : MonoBehaviour {
 
     public void ChangeLevel(int level, int exp, int expNeeded)
     {
-        levelText.text = "Lv: " + level;
-        EXPGauge.value = (float)exp / (float)expNeeded;
+        //levelText.text = "Lv: " + level;
+        //EXPGauge.value = (float)exp / (float)expNeeded;
     }
 
     public void ChangeBackground(int bg)
