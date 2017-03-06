@@ -15,15 +15,32 @@ public class Game : MonoBehaviour
     GameObject spawnedCircle;
     public Transform backgroundObject;
 
-    public float 
+    public float tapTimer;
+    public int combo;
 
+
+    void Update()
+    {
+        tapTimer += Time.deltaTime;
+    }
 
 
     public void OnTap()
     {
+        if(tapTimer < 0.6f && tapTimer > 0.4f)
+        {
+            combo++;
+        }
+        else
+        {
+            combo = 1;
+            
+        }
+        tapTimer = 0;
+
         sound.PlayOneShot(IM.instruments[0].GetAudioClip());
         GetScore();
-        UI.ChangeLevel(stats.playerLevel, stats.exp, stats.GetEXPNeededForNextLevel());
+        UI.ChangeComboText(combo);
 
         if(anim.GetBool("TapLeft"))
         {
@@ -50,11 +67,7 @@ public class Game : MonoBehaviour
 
     public void GetScore()
     {
-        stats.exp += stats.expPerTap;
-        if(stats.exp > stats.GetEXPNeededForNextLevel())
-        {
-            stats.playerLevel++;
-            stats.exp = 0;
-        }
+        stats.notes += 1 + Mathf.RoundToInt(stats.notesPerTap * 1.2f * (combo -1));
+        UI.changeNotes(stats.notes);
     }
 }

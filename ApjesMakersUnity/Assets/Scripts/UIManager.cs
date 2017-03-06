@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    
+
 
     //header
-    public Text levelText;
+    public Text notesText;
     public Slider EXPGauge;
+    public Text comboText;
 
     //PlayerArea
     public Image background;
@@ -25,14 +26,26 @@ public class UIManager : MonoBehaviour {
 		
 	}
 
-    public void ChangeLevel(int level, int exp, int expNeeded)
+    public void changeNotes(int notes)
     {
-        //levelText.text = "Lv: " + level;
-        //EXPGauge.value = (float)exp / (float)expNeeded;
+        notesText.text = notes + " notes";
     }
 
     public void ChangeBackground(int bg)
     {
         background.sprite = backgrounds[bg];
+    }
+
+    public void ChangeComboText(int combo)
+    {
+        if(combo > 1)
+        {
+            comboText.text = "Combo: " + combo;
+        }
+        else
+        {
+            comboText.text = "";
+        }
+        
     }
 }

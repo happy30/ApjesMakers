@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OuterCircle : MonoBehaviour {
 
     public float BPM;
-    float msToTarget;
+    public float msToTarget;
 
     RectTransform rect;
 
