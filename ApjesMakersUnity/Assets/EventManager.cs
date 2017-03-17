@@ -10,6 +10,7 @@ public class EventManager : MonoBehaviour
 
     public GameObject muis;
     public Transform muisSpawnerTransform;
+    public Animator busAnim;
 
     public float interval = 5;
     float timer;
@@ -25,13 +26,21 @@ public class EventManager : MonoBehaviour
         
 	void DoRandomEvent()
     {
-        if(Random.value > 0.5f)
+        float rand = Random.value;
+
+        Debug.Log(rand);
+
+        if(rand < 0.5f)
         {
             SpawnDruppel();
         }
-        else
+        else if (rand < 0.8f)
         {
             SpawnMuis();
+        }
+        else
+        {
+            SpawnBus();
         }     
         SetInterval();
     }
@@ -39,7 +48,7 @@ public class EventManager : MonoBehaviour
     void SetInterval()
     {
         timer = 0;
-        interval = Random.Range(5, 10);
+        interval = Random.Range(15, 20);
     }
 
     void SpawnMuis()
@@ -58,5 +67,10 @@ public class EventManager : MonoBehaviour
         spawnedDruppel.transform.SetParent(druppelSpawnerTransform);
         spawnedDruppel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         spawnedDruppel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+    }
+
+    void SpawnBus()
+    {
+        busAnim.SetTrigger("Bus");
     }
 }

@@ -6,4 +6,5 @@ public class StatsManager : MonoBehaviour
 {
     public int notesPerTap;
     public int notes;
+    public int coins;
 }

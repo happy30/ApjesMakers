@@ -15,7 +15,8 @@ public class MuisScript : MonoBehaviour
         rect = GetComponent<RectTransform>();
         moveSpeed = 700;
         rotateSpeed = 80;
-	}
+        GameObject.Find("SFX").GetComponent<PlaySFX>().PlaySound(GameObject.Find("SFX").GetComponent<PlaySFX>().muis);
+    }
 	
 	// Update is called once per frame
 	void Update ()

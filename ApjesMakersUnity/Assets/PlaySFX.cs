@@ -6,7 +6,10 @@ public class PlaySFX : MonoBehaviour {
 
     AudioSource _sound;
     public AudioClip[] druppel;
-    public AudioClip[] muis;
+    public AudioClip muis;
+    public AudioClip[] coin;
+
+    public AudioClip bus;
 
 	// Use this for initialization
 	void Start ()
@@ -22,5 +25,10 @@ public class PlaySFX : MonoBehaviour {
     public void PlaySound(AudioClip[] clip)
     {
         _sound.PlayOneShot(clip[Random.Range(0, clip.Length -1)]);
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        _sound.PlayOneShot(clip);
     }
 }
